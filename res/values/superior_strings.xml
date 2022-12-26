@@ -414,4 +414,7 @@
     <string name="quick_pulldown_left">Pulldown status bar from left side</string>
     <string name="quick_pulldown_always">Always show quick settings on status bar pull down</string>
 
+    <!-- UI styles -->
+    <string name="theme_customization_ui_style_title">UI Style</string>
+    <string name="theme_customization_ui_style_summary">Set custom style for your interface</string>
 </resources>

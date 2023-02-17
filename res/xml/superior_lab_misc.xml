@@ -54,8 +54,6 @@
             android:summary="@string/netflix_spoof_summary"
             android:defaultValue="false" />
 
-    </PreferenceCategory>
-
     <!-- Smart Pixels -->
     <Preference
         android:key="smart_pixels"
@@ -63,4 +61,5 @@
         android:summary="@string/smart_pixels_summary" 
         android:fragment="com.superior.lab.fragments.SmartPixels" />
 
+    </PreferenceCategory>
 </PreferenceScreen>

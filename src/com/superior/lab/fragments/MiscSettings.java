@@ -81,6 +81,17 @@ public class MiscSettings extends SettingsPreferenceFragment implements
         updateSmartPixelsPreference();
     }
 
+    private void updateSmartPixelsPreference() {
+        PreferenceScreen prefSet = getPreferenceScreen();
+        boolean enableSmartPixels = getContext().getResources().
+                getBoolean(com.android.internal.R.bool.config_supportSmartPixels);
+        Preference smartPixels = findPreference(SMART_PIXELS);
+
+        if (!enableSmartPixels){
+            prefSet.removePreference(smartPixels);
+        }
+    }
+
     @Override
     public boolean onPreferenceChange(Preference preference, Object objValue) {
         if (preference == mGamesSpoof) {
@@ -97,17 +108,6 @@ public class MiscSettings extends SettingsPreferenceFragment implements
             return true;
         }
         return false;
-    }
-
-    private void updateSmartPixelsPreference() {
-        PreferenceScreen prefSet = getPreferenceScreen();
-        boolean enableSmartPixels = getContext().getResources().
-                getBoolean(com.android.internal.R.bool.config_supportSmartPixels);
-        Preference smartPixels = findPreference(SMART_PIXELS);
-
-        if (!enableSmartPixels){
-            prefSet.removePreference(smartPixels);
-        }
     }
 
     @Override

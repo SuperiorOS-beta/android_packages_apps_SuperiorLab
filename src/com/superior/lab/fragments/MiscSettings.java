@@ -17,6 +17,7 @@
 package com.superior.lab.fragments;
 
 import com.android.internal.logging.nano.MetricsProto;
+import com.superior.lab.fragments.SmartPixels;
 
 import android.app.Activity;
 import android.app.AlertDialog;
@@ -53,10 +54,12 @@ public class MiscSettings extends SettingsPreferenceFragment implements
     private static final String SYS_GAMES_SPOOF = "persist.sys.pixelprops.games";
     private static final String SYS_PHOTOS_SPOOF = "persist.sys.pixelprops.gphotos";
     private static final String SYS_NETFLIX_SPOOF = "persist.sys.pixelprops.netflix";
+    private static final String SMART_PIXELS = "smart_pixels";
 
     private SwitchPreference mGamesSpoof;
     private SwitchPreference mPhotosSpoof;
     private SwitchPreference mNetFlixSpoof;
+    private Preference mSmartPixels;
 
     @Override
     public void onCreate(Bundle icicle) {
@@ -76,6 +79,12 @@ public class MiscSettings extends SettingsPreferenceFragment implements
         mNetFlixSpoof = (SwitchPreference) findPreference(KEY_NETFLIX_SPOOF);
         mNetFlixSpoof.setChecked(SystemProperties.getBoolean(SYS_NETFLIX_SPOOF, false));
         mNetFlixSpoof.setOnPreferenceChangeListener(this);
+
+           mSmartPixels = (Preference) findPreference(SMART_PIXELS);
+           boolean mSmartPixelsSupported = getResources().getBoolean(
+                 com.android.internal.R.bool.config_supportSmartPixels);
+           if (!mSmartPixelsSupported)
+                 prefSet.removePreference(mSmartPixels);
     }
 
     @Override
